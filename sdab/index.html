@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sdab: Download media you own or have permission to use</title>
+  <meta name="description" content="Paste a link to media you own or have permission to use, pick a quality and format, and download. Fast, free, no account. Built around copyright and platform rules.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Sdab">
+  <link rel="canonical" href="https://reaksmeyan.github.io/sdab.github.io/">
+
+  <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sdab">
+  <meta property="og:title" content="Sdab: Download media you own or have permission to use">
+  <meta property="og:description" content="Paste a link, choose a format, download. Fast, free, no account, and built around copyright and platform rules.">
+  <meta property="og:url" content="https://reaksmeyan.github.io/sdab.github.io/">
+  <meta property="og:image" content="https://reaksmeyan.github.io/sdab.github.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sdab: a glass media card with format and rights badges">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sdab: Download media you own or have permission to use">
+  <meta name="twitter:description" content="Paste a link, choose a format, download. Fast, free, no account.">
+  <meta name="twitter:image" content="https://reaksmeyan.github.io/sdab.github.io/assets/img/og-image.png">
+  <meta name="twitter:image:alt" content="Sdab: a glass media card with format and rights badges">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Apply saved / system theme before first paint (prevents a flash) -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('sdab-theme');
+        var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://reaksmeyan.github.io/sdab.github.io/#website",
+        "url": "https://reaksmeyan.github.io/sdab.github.io/",
+        "name": "Sdab",
+        "description": "A media downloader for content you own, have permission to use, or that is openly licensed.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://reaksmeyan.github.io/sdab.github.io/#app",
+        "name": "Sdab",
+        "url": "https://reaksmeyan.github.io/sdab.github.io/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any (web browser)",
+        "browserRequirements": "Requires JavaScript",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "isPartOf": { "@id": "https://reaksmeyan.github.io/sdab.github.io/#website" }
+      },
+      {
+            "@type": "FAQPage",
+            "@id": "https://reaksmeyan.github.io/sdab.github.io/#faq",
+            "mainEntity": [
+                  {
+                        "@type": "Question",
+                        "name": "Is it legal to download media with Sdab?",
+                        "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "It depends on the content and your rights, not on the tool. Downloading is fine when you own the media, the owner has given you permission, or it is in the public domain or under a licence that allows it. Downloading anything else may break copyright law or the source platform's terms. This isn't legal advice."
+                        }
+                  },
+                  {
+                        "@type": "Question",
+                        "name": "What can I download?",
+                        "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Your own uploads, content you have written permission to save, and public-domain or Creative Commons media. Check the licence for attribution or reuse limits."
+                        }
+                  },
+                  {
+                        "@type": "Question",
+                        "name": "Why do I have to confirm my rights every time?",
+                        "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Every link is different, so every link needs its own confirmation. It's a reminder that you're responsible for what you download, and it helps keep the service to its intended use."
+                        }
+                  },
+                  {
+                        "@type": "Question",
+                        "name": "Which formats and qualities are available?",
+                        "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Video as MP4 or WebM in up to 1080p, and audio as MP3 or M4A. What you see depends on the source file. You'll see the exact options and an estimated file size before you download."
+                        }
+                  },
+                  {
+                        "@type": "Question",
+                        "name": "Do I need an account?",
+                        "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "No. There's no sign-up, no email address, and no password."
+                        }
+                  },
+                  {
+                        "@type": "Question",
+                        "name": "Is my data safe?",
+                        "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Links are sent over HTTPS and we don't ask for personal details. We don't use advertising or tracking cookies. Read the Privacy Policy for the details."
+                        }
+                  },
+                  {
+                        "@type": "Question",
+                        "name": "Why doesn't it work with streaming services?",
+                        "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Movies, shows, and music from subscription services are protected by DRM and licensing agreements. Sdab doesn't support them and doesn't try to bypass that protection."
+                        }
+                  },
+                  {
+                        "@type": "Question",
+                        "name": "How do I report content or request removal?",
+                        "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "If you own content that was processed through Sdab without your permission, send a notice using the Copyright Notice page. We review valid requests promptly and act on them."
+                        }
+                  }
+            ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body id="top">
+  <a href="#main" class="sr-only z-[70] rounded-lg bg-primary-600 px-4 py-3 font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to main content</a>
+
+  <!-- ─────────── SVG icon sprite ─────────── -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-0 w-0 overflow-hidden" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g-brand" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#06B6D4"/>
+      </linearGradient>
+    </defs>
+    <symbol id="i-logo" viewBox="0 0 32 32">
+      <rect width="32" height="32" rx="9" fill="url(#g-brand)"/>
+      <path d="M16 7v11m0 0-4.5-4.5M16 18l4.5-4.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M8.5 22.5h15" fill="none" stroke="#22C55E" stroke-width="2.8" stroke-linecap="round"/>
+    </symbol>
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.2 8.3 8 9 4.8-.7 8-4.5 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></symbol>
+      <symbol id="i-user-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-3.5 3.1-6 7-6s7 2.5 7 6"/><path d="m17 8 5 5m0-5-5 5"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+      <symbol id="i-unlock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 7.5-2"/></symbol>
+      <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5"/><path d="M4 20h16"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></symbol>
+      <symbol id="i-film" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M8 4v16M16 4v16M3 9h5M3 15h5M16 9h5M16 15h5"/></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></symbol>
+      <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4m0 0h11l-2 4 2 4H5"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></symbol>
+      <symbol id="i-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" opacity=".25"/><path d="M21 12a9 9 0 0 0-9-9"/></symbol>
+      <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="3" width="8" height="4" rx="1"/><path d="M16 5h2a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2"/></symbol>
+    </g>
+  </svg>
+
+  <!-- ─────────── Navigation ─────────── -->
+  <header class="sticky top-0 z-50">
+    <div class="wrap relative pt-3">
+      <nav class="glass-strong flex h-16 items-center justify-between rounded-2xl px-3 sm:px-5" aria-label="Primary">
+        <a href="#top" class="flex min-h-[44px] items-center gap-2.5 rounded-lg font-display text-xl font-bold text-slate-900 dark:text-white" aria-label="Sdab home">
+          <svg class="h-8 w-8" aria-hidden="true"><use href="#i-logo"/></svg>
+          Sdab
+        </a>
+
+        <ul class="hidden items-center gap-1 md:flex">
+          <li><a class="rounded-lg px-4 py-2.5 text-[15px] font-medium text-slate-700 transition hover:bg-slate-900/5 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white" href="#features">Features</a></li>
+          <li><a class="rounded-lg px-4 py-2.5 text-[15px] font-medium text-slate-700 transition hover:bg-slate-900/5 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white" href="#how">How it works</a></li>
+          <li><a class="rounded-lg px-4 py-2.5 text-[15px] font-medium text-slate-700 transition hover:bg-slate-900/5 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white" href="#faq">FAQ</a></li>
+          <li><a class="rounded-lg px-4 py-2.5 text-[15px] font-medium text-slate-700 transition hover:bg-slate-900/5 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white" href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" type="button" class="btn-icon" aria-label="Switch to dark mode" aria-pressed="false">
+            <svg class="h-5 w-5 dark:hidden" aria-hidden="true"><use href="#i-moon"/></svg>
+            <svg class="hidden h-5 w-5 dark:block" aria-hidden="true"><use href="#i-sun"/></svg>
+          </button>
+          <a href="#hero-form" class="btn btn-primary hidden min-h-[44px] px-4 md:inline-flex">Get media</a>
+          <button id="menu-toggle" type="button" class="btn-icon md:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+            <svg class="h-5 w-5" aria-hidden="true"><use href="#i-menu"/></svg>
+          </button>
+        </div>
+      </nav>
+
+      <div id="mobile-menu" class="glass-strong absolute inset-x-5 top-full mt-2 rounded-2xl p-2 shadow-xl sm:inset-x-8 md:hidden" hidden>
+        <ul>
+          <li><a class="flex min-h-[48px] items-center rounded-xl px-4 font-medium text-slate-800 hover:bg-slate-900/5 dark:text-slate-100 dark:hover:bg-white/10" href="#features">Features</a></li>
+          <li><a class="flex min-h-[48px] items-center rounded-xl px-4 font-medium text-slate-800 hover:bg-slate-900/5 dark:text-slate-100 dark:hover:bg-white/10" href="#how">How it works</a></li>
+          <li><a class="flex min-h-[48px] items-center rounded-xl px-4 font-medium text-slate-800 hover:bg-slate-900/5 dark:text-slate-100 dark:hover:bg-white/10" href="#faq">FAQ</a></li>
+          <li><a class="flex min-h-[48px] items-center rounded-xl px-4 font-medium text-slate-800 hover:bg-slate-900/5 dark:text-slate-100 dark:hover:bg-white/10" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ─────────── Hero ─────────── -->
+    <section class="relative isolate -mt-[4.75rem] overflow-hidden pb-16 pt-[calc(4.75rem+2.5rem)] sm:pb-24 sm:pt-[calc(4.75rem+4.5rem)]" aria-labelledby="hero-title">
+      <!-- Animated background (decorative) -->
+      <div class="fade-bottom pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+        <div class="grid-fade absolute inset-0"></div>
+        <div class="absolute -left-40 -top-40 h-[30rem] w-[30rem] animate-drift rounded-full bg-primary-500/25 blur-3xl will-change-transform dark:bg-primary-500/30"></div>
+        <div class="absolute -right-32 top-16 h-[26rem] w-[26rem] animate-drift-slow rounded-full bg-secondary-400/25 blur-3xl will-change-transform dark:bg-secondary-500/20"></div>
+        <div class="absolute bottom-0 left-1/3 h-72 w-72 animate-drift rounded-full bg-accent-400/15 blur-3xl will-change-transform"></div>
+      </div>
+
+      <div class="wrap grid items-center gap-14 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <h1 id="hero-title" class="animate-rise text-[2.4rem] font-bold leading-[1.08] sm:text-5xl lg:text-[3.5rem]">
+            Save the media you have the right to keep.
+          </h1>
+          <p class="mt-5 max-w-[56ch] animate-rise text-lg text-slate-600 dark:text-slate-400" style="animation-delay:.08s">
+            Paste a link to something you made, have permission to use, or that's openly licensed. Pick a quality and format, then download. No account, no pop-ups.
+          </p>
+
+          <!-- Downloader form -->
+          <form id="hero-form" class="rights-lock glass-strong mt-8 animate-rise rounded-3xl p-3 sm:p-4" style="animation-delay:.16s" novalidate data-unlocked="false" aria-label="Media link">
+            <div class="flex flex-col gap-3 sm:flex-row">
+              <div class="relative flex-1">
+                <label for="url-input" class="sr-only">Link to your media</label>
+                <svg class="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-600 dark:text-slate-400" aria-hidden="true"><use href="#i-link"/></svg>
+                <input id="url-input" name="url" type="url" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" required
+                       class="field pl-11 pr-[5.5rem]" placeholder="Paste a link to your media" aria-describedby="url-error url-hint">
+                <button id="paste-btn" type="button" class="absolute right-1.5 top-1/2 inline-flex min-h-[40px] -translate-y-1/2 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold text-primary-700 transition hover:bg-primary-600/10 dark:text-primary-300 dark:hover:bg-white/10">
+                  <svg class="h-4 w-4" aria-hidden="true"><use href="#i-clipboard"/></svg>Paste
+                </button>
+              </div>
+              <button id="fetch-btn" type="submit" class="btn btn-primary sm:min-w-[172px]">
+                <svg class="lock-closed h-5 w-5" aria-hidden="true"><use href="#i-lock"/></svg>
+                <svg class="lock-open h-5 w-5" aria-hidden="true"><use href="#i-unlock"/></svg>
+                <svg class="spinner hidden h-5 w-5 animate-spin" aria-hidden="true"><use href="#i-spinner"/></svg>
+                <span class="btn-label">Get media</span>
+              </button>
+            </div>
+
+            <p id="url-error" class="mt-3 hidden items-start gap-2 rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-800 dark:bg-red-500/10 dark:text-red-300" role="alert">
+              <svg class="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true"><use href="#i-alert"/></svg><span></span>
+            </p>
+            <p id="url-notice" class="mt-3 hidden items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:bg-amber-400/10 dark:text-amber-200" role="status">
+              <svg class="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true"><use href="#i-info"/></svg><span></span>
+            </p>
+
+            <div class="mt-3 flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white/50 p-3 dark:border-white/10 dark:bg-white/[0.03]">
+              <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-600/10 text-primary-700 dark:bg-primary-400/15 dark:text-primary-300">
+                <svg class="lock-closed h-5 w-5" aria-hidden="true"><use href="#i-lock"/></svg>
+                <svg class="lock-open h-5 w-5" aria-hidden="true"><use href="#i-unlock"/></svg>
+              </span>
+              <div class="min-w-0">
+                <label for="rights" class="flex cursor-pointer items-start gap-3 text-[15px] font-medium leading-snug text-slate-800 dark:text-slate-100">
+                  <input id="rights" name="rights" type="checkbox" class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded accent-primary-600" aria-describedby="rights-help">
+                  <span>I own this content or have permission to download it, and I'll follow the source platform's terms.</span>
+                </label>
+                <p id="rights-help" class="mt-1.5 pl-8 text-sm text-slate-600 dark:text-slate-400">
+                  Not sure? Read <a class="link" href="#responsible">what's okay to download</a>.
+                </p>
+              </div>
+            </div>
+            <p id="url-hint" class="sr-only">Enter a full web address that starts with https.</p>
+          </form>
+
+          <ul class="mt-6 flex animate-rise flex-wrap gap-2" style="animation-delay:.24s" aria-label="Highlights">
+            <li class="chip"><svg class="h-4 w-4 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>No account</li>
+            <li class="chip"><svg class="h-4 w-4 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>Free to use</li>
+            <li class="chip"><svg class="h-4 w-4 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>MP4, WebM, MP3, M4A</li>
+          </ul>
+        </div>
+
+        <!-- Hero illustration (decorative) -->
+        <div class="relative mx-auto w-full max-w-sm animate-rise sm:max-w-md lg:col-span-5 lg:max-w-none" style="animation-delay:.2s" aria-hidden="true">
+          <div class="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-primary-500/30 via-secondary-400/20 to-accent-400/20 blur-2xl"></div>
+
+          <div class="glass-strong relative animate-bob rounded-4xl p-4">
+            <div class="relative aspect-video overflow-hidden rounded-2xl bg-gradient-to-br from-primary-700 via-primary-500 to-secondary-500">
+              <svg viewBox="0 0 320 180" class="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
+                <circle cx="240" cy="52" r="26" fill="#fff" opacity=".9"/>
+                <path d="M0 180V128l58-42 52 40 46-30 70 52 94-36v68z" fill="#1E1B4B" opacity=".55"/>
+                <path d="M0 180v-30l70-30 60 32 72-40 118 50v18z" fill="#0B1220" opacity=".55"/>
+              </svg>
+              <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-white/25 text-white backdrop-blur-md">
+                <svg class="ml-0.5 h-6 w-6" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg>
+              </span>
+              <span class="absolute bottom-2 right-2 rounded-md bg-black/60 px-2 py-0.5 text-xs font-semibold text-white">3:42</span>
+            </div>
+            <div class="mt-4 flex items-center gap-3">
+              <span class="h-9 w-9 shrink-0 rounded-full bg-gradient-to-br from-secondary-400 to-primary-500"></span>
+              <div class="flex-1 space-y-2">
+                <div class="h-3 w-4/5 rounded-full bg-slate-900/15 dark:bg-white/20"></div>
+                <div class="h-2.5 w-2/5 rounded-full bg-slate-900/10 dark:bg-white/10"></div>
+              </div>
+            </div>
+            <div class="mt-4 h-2 overflow-hidden rounded-full bg-slate-900/10 dark:bg-white/10">
+              <div class="h-full w-2/3 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500"></div>
+            </div>
+          </div>
+
+          <div class="glass-strong absolute left-1 top-10 flex animate-bob-delay items-center gap-2 rounded-2xl px-3.5 py-2.5 text-sm font-semibold text-slate-800 dark:text-white sm:-left-6">
+            <svg class="h-4 w-4 text-primary-600 dark:text-primary-300" aria-hidden="true"><use href="#i-film"/></svg>MP4 · 1080p
+          </div>
+          <div class="glass-strong absolute -bottom-5 -right-1 flex animate-bob items-center gap-2 rounded-2xl px-3.5 py-2.5 text-sm font-semibold text-slate-800 dark:text-white sm:-right-4">
+            <svg class="h-4 w-4 text-primary-600 dark:text-primary-300" aria-hidden="true"><use href="#i-download"/></svg>Ready to download
+          </div>
+          <div class="glass-strong absolute -bottom-5 left-6 flex animate-bob-delay items-center gap-2 rounded-2xl px-3.5 py-2.5 text-sm font-semibold text-slate-800 dark:text-white">
+            <svg class="h-4 w-4 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-unlock"/></svg>Rights confirmed
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── Media preview ─────────── -->
+    <section id="preview" class="pb-20 sm:pb-28" aria-labelledby="preview-title">
+      <div class="wrap">
+        <h2 id="preview-title" class="section-title max-w-[22ch]">Check the details before you download</h2>
+        <p class="section-lead">Title, length, source, and available formats appear here as soon as your link is read.</p>
+
+        <div id="preview-card" class="glass-strong mt-10 rounded-4xl p-5 sm:p-8" aria-busy="false">
+          <!-- Empty -->
+          <div data-state="empty" class="grid items-center gap-8 md:grid-cols-2">
+            <div class="flex aspect-video items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 text-slate-500 dark:border-white/15" aria-hidden="true">
+              <svg class="h-12 w-12" aria-hidden="true"><use href="#i-film"/></svg>
+            </div>
+            <div>
+              <h3 class="text-xl">Nothing to preview yet</h3>
+              <p class="mt-2 max-w-[48ch]">Paste a link above and choose <strong class="font-semibold text-slate-900 dark:text-white">Get media</strong>. You'll pick a format and quality here before anything downloads.</p>
+              <a href="#hero-form" data-focus-input class="btn btn-quiet mt-5">Go to link box</a>
+            </div>
+          </div>
+
+          <!-- Loading -->
+          <div data-state="loading" hidden class="grid gap-8 md:grid-cols-2" role="status" aria-label="Reading your link">
+            <div class="skeleton aspect-video rounded-2xl"></div>
+            <div class="space-y-4">
+              <div class="skeleton h-7 w-4/5"></div>
+              <div class="skeleton h-4 w-2/5"></div>
+              <div class="skeleton h-4 w-3/5"></div>
+              <div class="mt-6 grid grid-cols-2 gap-3">
+                <div class="skeleton h-12"></div><div class="skeleton h-12"></div>
+                <div class="skeleton h-12"></div><div class="skeleton h-12"></div>
+              </div>
+              <span class="sr-only">Reading your link…</span>
+            </div>
+          </div>
+
+          <!-- Error -->
+          <div data-state="error" hidden class="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-red-100 text-red-700 dark:bg-red-500/15 dark:text-red-300"><svg class="h-6 w-6" aria-hidden="true"><use href="#i-alert"/></svg></span>
+            <div class="flex-1">
+              <h3 id="error-title" class="text-xl">We couldn't read that link</h3>
+              <p id="error-text" class="mt-1"></p>
+            </div>
+            <button type="button" data-action="reset" class="btn btn-quiet">Try another link</button>
+          </div>
+
+          <!-- Ready -->
+          <div data-state="ready" hidden class="grid gap-8 lg:grid-cols-2 lg:gap-10">
+            <div>
+              <div id="pv-thumb" class="relative aspect-video overflow-hidden rounded-2xl bg-slate-200 dark:bg-ink-700">
+                <span class="absolute inset-0 flex items-center justify-center" aria-hidden="true"><span class="flex h-14 w-14 items-center justify-center rounded-full border border-white/50 bg-white/25 text-white backdrop-blur-md"><svg class="ml-0.5 h-6 w-6" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg></span></span>
+                <span id="pv-duration" class="absolute bottom-2 right-2 rounded-md bg-black/70 px-2 py-0.5 text-xs font-semibold text-white"></span>
+              </div>
+              <h3 id="pv-title" class="mt-5 text-xl leading-snug sm:text-2xl"></h3>
+              <dl class="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
+                <div class="flex items-center gap-2"><dt class="sr-only">Author</dt><svg class="h-4 w-4 text-slate-600 dark:text-slate-400" aria-hidden="true"><use href="#i-user"/></svg><dd id="pv-author"></dd></div>
+                <div class="flex items-center gap-2"><dt class="sr-only">Duration</dt><svg class="h-4 w-4 text-slate-600 dark:text-slate-400" aria-hidden="true"><use href="#i-clock"/></svg><dd id="pv-length"></dd></div>
+                <div class="flex items-center gap-2"><dt class="sr-only">Source</dt><svg class="h-4 w-4 text-slate-600 dark:text-slate-400" aria-hidden="true"><use href="#i-link"/></svg><dd id="pv-source" class="break-all"></dd></div>
+              </dl>
+              <p class="mt-4 flex items-start gap-2 rounded-xl bg-accent-100 px-3 py-2.5 text-sm text-accent-900 dark:bg-accent-500/10 dark:text-accent-200">
+                <svg class="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true"><use href="#i-unlock"/></svg>
+                You confirmed you have the right to download this. Keep it for personal, licensed, or permitted use.
+              </p>
+            </div>
+
+            <div>
+              <fieldset>
+                <legend class="text-sm font-semibold text-slate-900 dark:text-white">Format</legend>
+                <div id="format-options" class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4"></div>
+              </fieldset>
+              <fieldset class="mt-6">
+                <legend class="text-sm font-semibold text-slate-900 dark:text-white">Quality</legend>
+                <div id="quality-options" class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4"></div>
+              </fieldset>
+
+              <p class="mt-5 text-sm">Estimated file size: <strong id="pv-size" class="font-semibold text-slate-900 dark:text-white">-</strong></p>
+
+              <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+                <button id="download-btn" type="button" class="btn btn-primary flex-1">
+                  <svg class="h-5 w-5" aria-hidden="true"><use href="#i-download"/></svg><span class="btn-label">Download</span>
+                </button>
+                <button type="button" data-action="reset" class="btn btn-quiet"><svg class="h-4 w-4" aria-hidden="true"><use href="#i-reset"/></svg>Start over</button>
+              </div>
+
+              <div id="pv-progress-wrap" class="mt-4 hidden">
+                <div class="h-2.5 overflow-hidden rounded-full bg-slate-900/10 dark:bg-white/10" role="progressbar" aria-label="Preparing your file" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pv-progress">
+                  <div id="pv-progress-bar" class="h-full w-0 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 transition-[width] duration-200"></div>
+                </div>
+              </div>
+              <p id="pv-status" class="mt-3 text-sm" role="status"></p>
+
+              <p id="demo-note" class="mt-4 hidden items-start gap-2 rounded-xl bg-amber-50 px-3 py-2.5 text-sm text-amber-900 dark:bg-amber-400/10 dark:text-amber-200">
+                <svg class="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true"><use href="#i-info"/></svg>
+                <span><strong class="font-semibold">Demo mode.</strong> This site isn't connected to a processing service, so the details above are sample data and no file is created. See the README to connect one.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── Features (bento) ─────────── -->
+    <section id="features" class="section border-y border-slate-200/70 bg-white/50 dark:border-white/5 dark:bg-white/[0.02]" aria-labelledby="features-title">
+      <div class="wrap">
+        <h2 id="features-title" class="section-title max-w-[20ch]">A downloader that stays out of your way</h2>
+        <p class="section-lead">Everything you need to get a file you're allowed to keep, and nothing that gets in the way.</p>
+
+        <div class="mt-12 grid gap-4 md:grid-cols-6">
+          <article class="relative overflow-hidden rounded-4xl bg-gradient-to-br from-primary-700 via-primary-600 to-primary-500 p-7 text-white shadow-glow sm:p-9 md:col-span-4">
+            <svg class="h-8 w-8 text-secondary-300" aria-hidden="true"><use href="#i-bolt"/></svg>
+            <h3 class="mt-5 text-2xl !text-white">Fast processing</h3>
+            <p class="mt-2 max-w-[44ch] text-primary-100">Most links are read in a few seconds, and you see progress the whole way. No waiting on a mystery spinner.</p>
+            <div class="mt-8 max-w-sm" aria-hidden="true">
+              <div class="flex justify-between text-xs font-medium text-primary-100"><span>Reading link</span><span>Preparing file</span></div>
+              <div class="mt-2 h-2.5 overflow-hidden rounded-full bg-white/20"><div class="h-full w-4/5 rounded-full bg-gradient-to-r from-secondary-300 to-accent-400"></div></div>
+            </div>
+            <div class="pointer-events-none absolute -bottom-16 -right-10 h-56 w-56 rounded-full bg-secondary-400/30 blur-2xl" aria-hidden="true"></div>
+          </article>
+
+          <article class="glass rounded-3xl p-7 md:col-span-2">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-600/10 text-primary-700 dark:bg-primary-400/15 dark:text-primary-300"><svg class="h-6 w-6" aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <h3 class="mt-5 text-xl">Secure downloads</h3>
+            <p class="mt-2">Everything runs over HTTPS. We ask only for the link, nothing about you.</p>
+          </article>
+
+          <article class="glass rounded-3xl p-7 md:col-span-2">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary-500/15 text-secondary-800 dark:text-secondary-300"><svg class="h-6 w-6" aria-hidden="true"><use href="#i-phone"/></svg></span>
+            <h3 class="mt-5 text-xl">Mobile friendly</h3>
+            <p class="mt-2">Big tap targets, one-handed layout, and a paste button that works with your keyboard.</p>
+          </article>
+
+          <article class="glass rounded-3xl p-7 md:col-span-2">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent-500/15 text-accent-800 dark:text-accent-300"><svg class="h-6 w-6" aria-hidden="true"><use href="#i-user-x"/></svg></span>
+            <h3 class="mt-5 text-xl">No registration</h3>
+            <p class="mt-2">No sign-up, no email, no password. Paste, choose, download.</p>
+          </article>
+
+          <article class="glass rounded-3xl p-7 md:col-span-2">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-600/10 text-primary-700 dark:bg-primary-400/15 dark:text-primary-300"><svg class="h-6 w-6" aria-hidden="true"><use href="#i-layers"/></svg></span>
+            <h3 class="mt-5 text-xl">Multiple formats</h3>
+            <p class="mt-2">Video as MP4 or WebM. Audio as MP3 or M4A. Choose the quality that fits your storage.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── How it works (a real sequence) ─────────── -->
+    <section id="how" class="section" aria-labelledby="how-title">
+      <div class="wrap">
+        <h2 id="how-title" class="section-title max-w-[18ch]">Three steps, about ten seconds</h2>
+        <p class="section-lead">The whole flow fits on one screen, so there's nothing to learn.</p>
+
+        <ol class="relative mt-14 grid gap-6 md:grid-cols-3">
+          <li class="group glass relative rounded-3xl p-7 transition duration-300 hover:-translate-y-1 hover:shadow-glow">
+            <span class="absolute -top-4 left-7 flex h-9 w-9 items-center justify-center rounded-full bg-primary-600 font-display text-sm font-bold text-white shadow-glow" aria-hidden="true">1</span>
+            <h3 class="mt-3 text-xl"><span class="sr-only">Step 1: </span>Paste the link</h3>
+            <p class="mt-2">Copy the address of your media and paste it in the box. Confirm you have the right to download it.</p>
+            <div class="mt-6 flex items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-3 py-3 text-sm text-slate-600 dark:text-slate-400 dark:border-white/10 dark:bg-white/5" aria-hidden="true">
+              <svg class="h-4 w-4 shrink-0" aria-hidden="true"><use href="#i-link"/></svg>
+              <span class="truncate">https://example.com/my-video</span>
+              <span class="ml-auto h-4 w-0.5 animate-pulse bg-primary-600"></span>
+            </div>
+          </li>
+
+          <li class="group glass relative rounded-3xl p-7 transition duration-300 hover:-translate-y-1 hover:shadow-glow">
+            <span class="absolute -top-4 left-7 flex h-9 w-9 items-center justify-center rounded-full bg-primary-600 font-display text-sm font-bold text-white shadow-glow" aria-hidden="true">2</span>
+            <h3 class="mt-3 text-xl"><span class="sr-only">Step 2: </span>Choose a format</h3>
+            <p class="mt-2">Check the title and length, then pick video or audio and the quality you want.</p>
+            <div class="mt-6 flex flex-wrap gap-2 text-sm font-medium" aria-hidden="true">
+              <span class="rounded-lg border border-primary-600 bg-primary-600/10 px-3 py-2 text-primary-800 dark:border-primary-400 dark:text-white">MP4</span>
+              <span class="rounded-lg border border-slate-300 px-3 py-2 text-slate-600 transition group-hover:border-primary-400 dark:border-white/10 dark:text-slate-400">MP3</span>
+              <span class="rounded-lg border border-slate-300 px-3 py-2 text-slate-600 dark:border-white/10 dark:text-slate-400">1080p</span>
+            </div>
+          </li>
+
+          <li class="group glass relative rounded-3xl p-7 transition duration-300 hover:-translate-y-1 hover:shadow-glow">
+            <span class="absolute -top-4 left-7 flex h-9 w-9 items-center justify-center rounded-full bg-primary-600 font-display text-sm font-bold text-white shadow-glow" aria-hidden="true">3</span>
+            <h3 class="mt-3 text-xl"><span class="sr-only">Step 3: </span>Download the file</h3>
+            <p class="mt-2">Tap Download. The file is prepared on the spot and saved straight to your device.</p>
+            <div class="mt-6" aria-hidden="true">
+              <div class="h-2.5 overflow-hidden rounded-full bg-slate-900/10 dark:bg-white/10"><div class="h-full w-2/3 rounded-full bg-gradient-to-r from-primary-600 to-accent-500 group-hover:animate-fill"></div></div>
+              <p class="mt-2 text-xs text-slate-600 dark:text-slate-400">Preparing your file…</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ─────────── Responsible use ─────────── -->
+    <section id="responsible" class="section border-y border-slate-200/70 bg-white/50 dark:border-white/5 dark:bg-white/[0.02]" aria-labelledby="responsible-title">
+      <div class="wrap">
+        <h2 id="responsible-title" class="section-title max-w-[24ch]">Download responsibly</h2>
+        <p class="section-lead">Sdab is a tool. Whether a download is allowed depends on who owns the content and what the source's terms say. Here's how to stay on the right side of both.</p>
+
+        <div class="mt-12 grid gap-10 md:grid-cols-3">
+          <div class="border-l-4 border-accent-500 pl-6">
+            <h3 class="text-xl">Good to go</h3>
+            <ul class="mt-4 space-y-3">
+              <li class="flex gap-3"><svg class="mt-1 h-4 w-4 shrink-0 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>Videos and audio you made and uploaded yourself</li>
+              <li class="flex gap-3"><svg class="mt-1 h-4 w-4 shrink-0 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>Content the owner gave you written permission to save</li>
+              <li class="flex gap-3"><svg class="mt-1 h-4 w-4 shrink-0 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>Public-domain and Creative Commons media, with attribution where required</li>
+            </ul>
+          </div>
+          <div class="border-l-4 border-red-500 pl-6">
+            <h3 class="text-xl">Not supported</h3>
+            <ul class="mt-4 space-y-3">
+              <li class="flex gap-3"><svg class="mt-1 h-4 w-4 shrink-0 text-red-700 dark:text-red-400" aria-hidden="true"><use href="#i-x"/></svg>DRM-protected content from streaming and subscription services</li>
+              <li class="flex gap-3"><svg class="mt-1 h-4 w-4 shrink-0 text-red-700 dark:text-red-400" aria-hidden="true"><use href="#i-x"/></svg>Private, paid, or login-only content you don't own</li>
+              <li class="flex gap-3"><svg class="mt-1 h-4 w-4 shrink-0 text-red-700 dark:text-red-400" aria-hidden="true"><use href="#i-x"/></svg>Anything you plan to re-upload, sell, or redistribute without rights</li>
+            </ul>
+          </div>
+          <div class="border-l-4 border-primary-500 pl-6">
+            <h3 class="text-xl">Your part</h3>
+            <ul class="mt-4 space-y-3">
+              <li class="flex gap-3"><svg class="mt-1 h-4 w-4 shrink-0 text-primary-700 dark:text-primary-300" aria-hidden="true"><use href="#i-info"/></svg>Read the source platform's terms. Many only allow downloads through their own features.</li>
+              <li class="flex gap-3"><svg class="mt-1 h-4 w-4 shrink-0 text-primary-700 dark:text-primary-300" aria-hidden="true"><use href="#i-info"/></svg>Copyright law varies by country. This page isn't legal advice.</li>
+              <li class="flex gap-3"><svg class="mt-1 h-4 w-4 shrink-0 text-primary-700 dark:text-primary-300" aria-hidden="true"><use href="#i-flag"/></svg><span>Own something we've processed? <a class="link" href="copyright.html">Send a takedown request</a>.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── Why choose us ─────────── -->
+    <section id="why" class="section" aria-labelledby="why-title">
+      <div class="wrap">
+        <h2 id="why-title" class="section-title max-w-[22ch]">Why people switch from generic converters</h2>
+        <p class="section-lead">The category has a reputation for pop-ups, redirects, and fine print. We built the opposite.</p>
+
+        <div class="glass mt-12 overflow-x-auto rounded-3xl">
+          <table class="w-full border-collapse text-left text-[15px]">
+            <caption class="sr-only">Comparison of Sdab with typical converter websites</caption>
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-white/10">
+                <th scope="col" class="w-[38%] px-4 py-5 font-medium text-slate-600 dark:text-slate-400 sm:px-6"><span class="sr-only">Feature</span></th>
+                <th scope="col" class="px-4 py-5 font-display text-base font-semibold text-primary-700 dark:text-primary-300 sm:px-6">Sdab</th>
+                <th scope="col" class="px-4 py-5 font-display text-base font-semibold text-slate-600 dark:text-slate-400 sm:px-6">Typical converter sites</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 dark:divide-white/10">
+              <tr><th scope="row" class="px-4 py-4 font-medium text-slate-900 dark:text-white sm:px-6">Rights guidance</th><td class="px-4 py-4 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>Built into every download</span></td><td class="px-4 py-4 text-slate-600 dark:text-slate-400 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-red-600 dark:text-red-400" aria-hidden="true"><use href="#i-x"/></svg>Rarely mentioned</span></td></tr>
+              <tr><th scope="row" class="px-4 py-4 font-medium text-slate-900 dark:text-white sm:px-6">Ads and pop-ups</th><td class="px-4 py-4 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>None</span></td><td class="px-4 py-4 text-slate-600 dark:text-slate-400 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-red-600 dark:text-red-400" aria-hidden="true"><use href="#i-x"/></svg>Frequent redirects</span></td></tr>
+              <tr><th scope="row" class="px-4 py-4 font-medium text-slate-900 dark:text-white sm:px-6">Account needed</th><td class="px-4 py-4 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>Never</span></td><td class="px-4 py-4 text-slate-600 dark:text-slate-400 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-red-600 dark:text-red-400" aria-hidden="true"><use href="#i-x"/></svg>Often for full quality</span></td></tr>
+              <tr><th scope="row" class="px-4 py-4 font-medium text-slate-900 dark:text-white sm:px-6">Details before you download</th><td class="px-4 py-4 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>Title, length, size</span></td><td class="px-4 py-4 text-slate-600 dark:text-slate-400 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-red-600 dark:text-red-400" aria-hidden="true"><use href="#i-x"/></svg>Revealed at the end</span></td></tr>
+              <tr><th scope="row" class="px-4 py-4 font-medium text-slate-900 dark:text-white sm:px-6">Privacy</th><td class="px-4 py-4 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>No tracking cookies</span></td><td class="px-4 py-4 text-slate-600 dark:text-slate-400 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-red-600 dark:text-red-400" aria-hidden="true"><use href="#i-x"/></svg>Heavy third-party tracking</span></td></tr>
+              <tr><th scope="row" class="px-4 py-4 font-medium text-slate-900 dark:text-white sm:px-6">On a phone</th><td class="px-4 py-4 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent-700 dark:text-accent-400" aria-hidden="true"><use href="#i-check"/></svg>Designed touch-first</span></td><td class="px-4 py-4 text-slate-600 dark:text-slate-400 sm:px-6"><span class="inline-flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-red-600 dark:text-red-400" aria-hidden="true"><use href="#i-x"/></svg>Cluttered layouts</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">Comparison reflects common patterns across the category; individual sites vary.</p>
+      </div>
+    </section>
+
+    <!-- ─────────── Statistics ─────────── -->
+    <section class="pb-20 sm:pb-28" aria-labelledby="stats-title">
+      <div class="wrap">
+        <h2 id="stats-title" class="sr-only">Sdab in numbers</h2>
+        <!-- REPLACE the numbers below with real analytics before launch. Do not publish invented statistics. -->
+        <dl class="glass-strong grid divide-y divide-slate-200 rounded-4xl dark:divide-white/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          <div class="flex flex-col-reverse px-8 py-9">
+            <dt class="mt-2 text-slate-600 dark:text-slate-400">Users served</dt>
+            <dd class="font-display text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl"><span data-count="1200000" data-compact="true" data-suffix="+">1.2M+</span></dd>
+          </div>
+          <div class="flex flex-col-reverse px-8 py-9">
+            <dt class="mt-2 text-slate-600 dark:text-slate-400">Downloads completed</dt>
+            <dd class="font-display text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl"><span data-count="4800000" data-compact="true" data-suffix="+">4.8M+</span></dd>
+          </div>
+          <div class="flex flex-col-reverse px-8 py-9">
+            <dt class="mt-2 text-slate-600 dark:text-slate-400">Average processing time</dt>
+            <dd class="font-display text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl"><span data-count="3.1" data-decimals="1" data-suffix=" s">3.1 s</span></dd>
+          </div>
+        </dl>
+        <p data-placeholder-note class="mt-3 text-sm text-slate-600 dark:text-slate-400">Sample figures for the design preview. Replace with your own analytics before launch.</p>
+      </div>
+    </section>
+
+    <!-- ─────────── FAQ ─────────── -->
+    <section id="faq" class="section border-t border-slate-200/70 dark:border-white/5" aria-labelledby="faq-title">
+      <div class="wrap grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <h2 id="faq-title" class="section-title">Questions, answered</h2>
+          <p class="section-lead">Can't find yours? <a class="link" href="#contact">Get in touch</a>.</p>
+        </div>
+        <div class="divide-y divide-slate-200 border-y border-slate-200 dark:divide-white/10 dark:border-white/10 lg:col-span-8">
+          <details class="faq">
+            <summary>Is it legal to download media with Sdab?<svg class="faq-icon h-5 w-5" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-body pb-6 pr-10"><p class="max-w-[62ch]">It depends on the content and your rights, not on the tool. Downloading is fine when you own the media, the owner has given you permission, or it is in the public domain or under a licence that allows it. Downloading anything else may break copyright law or the source platform's terms. This isn't legal advice.</p></div>
+          </details>
+          <details class="faq">
+            <summary>What can I download?<svg class="faq-icon h-5 w-5" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-body pb-6 pr-10"><p class="max-w-[62ch]">Your own uploads, content you have written permission to save, and public-domain or Creative Commons media. Check the licence for attribution or reuse limits.</p></div>
+          </details>
+          <details class="faq">
+            <summary>Why do I have to confirm my rights every time?<svg class="faq-icon h-5 w-5" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-body pb-6 pr-10"><p class="max-w-[62ch]">Every link is different, so every link needs its own confirmation. It's a reminder that you're responsible for what you download, and it helps keep the service to its intended use.</p></div>
+          </details>
+          <details class="faq">
+            <summary>Which formats and qualities are available?<svg class="faq-icon h-5 w-5" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-body pb-6 pr-10"><p class="max-w-[62ch]">Video as MP4 or WebM in up to 1080p, and audio as MP3 or M4A. What you see depends on the source file. You'll see the exact options and an estimated file size before you download.</p></div>
+          </details>
+          <details class="faq">
+            <summary>Do I need an account?<svg class="faq-icon h-5 w-5" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-body pb-6 pr-10"><p class="max-w-[62ch]">No. There's no sign-up, no email address, and no password.</p></div>
+          </details>
+          <details class="faq">
+            <summary>Is my data safe?<svg class="faq-icon h-5 w-5" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-body pb-6 pr-10"><p class="max-w-[62ch]">Links are sent over HTTPS and we don't ask for personal details. We don't use advertising or tracking cookies. Read the <a class="link" href="privacy.html">Privacy Policy</a> for the details.</p></div>
+          </details>
+          <details class="faq">
+            <summary>Why doesn't it work with streaming services?<svg class="faq-icon h-5 w-5" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-body pb-6 pr-10"><p class="max-w-[62ch]">Movies, shows, and music from subscription services are protected by DRM and licensing agreements. Sdab doesn't support them and doesn't try to bypass that protection.</p></div>
+          </details>
+          <details class="faq">
+            <summary>How do I report content or request removal?<svg class="faq-icon h-5 w-5" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-body pb-6 pr-10"><p class="max-w-[62ch]">If you own content that was processed through Sdab without your permission, send a notice using the <a class="link" href="copyright.html">Copyright Notice</a> page. We review valid requests promptly and act on them.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── Contact ─────────── -->
+    <section id="contact" class="section pt-0" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="relative overflow-hidden rounded-4xl bg-gradient-to-br from-ink-800 via-primary-950 to-ink-900 px-7 py-12 text-white sm:px-14 sm:py-16">
+          <div class="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-secondary-500/25 blur-3xl" aria-hidden="true"></div>
+          <div class="relative grid gap-10 md:grid-cols-2 md:items-center">
+            <div>
+              <h2 id="contact-title" class="text-3xl !text-white sm:text-4xl">Feedback, questions, or a takedown request?</h2>
+              <p class="mt-4 max-w-[48ch] text-slate-300">We read every message. Rights holders can reach us directly and we'll act on valid requests promptly.</p>
+            </div>
+            <ul class="space-y-3">
+              <li><a href="mailto:hello@example.com" class="flex min-h-[56px] items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-5 text-white transition hover:bg-white/10"><svg class="h-5 w-5 text-secondary-300" aria-hidden="true"><use href="#i-mail"/></svg><span><span class="block font-semibold">General support</span><span class="block text-sm text-slate-300">hello@example.com</span></span></a></li>
+              <li><a href="copyright.html" class="flex min-h-[56px] items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-5 text-white transition hover:bg-white/10"><svg class="h-5 w-5 text-secondary-300" aria-hidden="true"><use href="#i-flag"/></svg><span><span class="block font-semibold">Copyright and takedowns</span><span class="block text-sm text-slate-300">How to submit a notice</span></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─────────── Footer ─────────── -->
+  <footer class="border-t border-slate-200/70 bg-white/60 dark:border-white/5 dark:bg-ink-950/60">
+    <div class="wrap py-14">
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <a href="#top" class="flex items-center gap-2.5 font-display text-xl font-bold text-slate-900 dark:text-white"><svg class="h-8 w-8" aria-hidden="true"><use href="#i-logo"/></svg>Sdab</a>
+          <p class="mt-4 max-w-[32ch] text-sm">A fast, private way to save media you have the right to keep.</p>
+        </div>
+        <nav aria-label="Product">
+          <h2 class="font-display text-sm font-semibold text-slate-900 dark:text-white">Product</h2>
+          <ul class="mt-4 space-y-1 text-sm">
+            <li><a class="inline-flex min-h-[44px] items-center hover:text-primary-700 dark:hover:text-white" href="#features">Features</a></li>
+            <li><a class="inline-flex min-h-[44px] items-center hover:text-primary-700 dark:hover:text-white" href="#how">How it works</a></li>
+            <li><a class="inline-flex min-h-[44px] items-center hover:text-primary-700 dark:hover:text-white" href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal">
+          <h2 class="font-display text-sm font-semibold text-slate-900 dark:text-white">Legal</h2>
+          <ul class="mt-4 space-y-1 text-sm">
+            <li><a class="inline-flex min-h-[44px] items-center hover:text-primary-700 dark:hover:text-white" href="privacy.html">Privacy Policy</a></li>
+            <li><a class="inline-flex min-h-[44px] items-center hover:text-primary-700 dark:hover:text-white" href="terms.html">Terms of Service</a></li>
+            <li><a class="inline-flex min-h-[44px] items-center hover:text-primary-700 dark:hover:text-white" href="copyright.html">Copyright Notice</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="font-display text-sm font-semibold text-slate-900 dark:text-white">Contact</h2>
+          <ul class="mt-4 space-y-1 text-sm">
+            <li><a class="inline-flex min-h-[44px] items-center hover:text-primary-700 dark:hover:text-white" href="mailto:hello@example.com">hello@example.com</a></li>
+            <li>[Your legal entity name]</li>
+            <li>[Your postal address]</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 border-t border-slate-200 pt-6 text-sm text-slate-600 dark:text-slate-400 dark:border-white/10">
+        <p>Sdab is an independent tool. It is not affiliated with, endorsed by, or sponsored by any media platform. You are responsible for making sure you have the right to download the content you process.</p>
+        <p class="mt-2">© <span id="year">2026</span> Sdab. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toasts" class="pointer-events-none fixed inset-x-4 bottom-4 z-[60] flex flex-col items-center gap-2" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
