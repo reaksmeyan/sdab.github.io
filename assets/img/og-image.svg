@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#06B6D4"/></linearGradient>
+    <linearGradient id="thumb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4338CA"/><stop offset=".55" stop-color="#4F46E5"/><stop offset="1" stop-color="#06B6D4"/></linearGradient>
+    <radialGradient id="b1" cx=".2" cy=".1" r=".6"><stop offset="0" stop-color="#4F46E5" stop-opacity=".55"/><stop offset="1" stop-color="#4F46E5" stop-opacity="0"/></radialGradient>
+    <radialGradient id="b2" cx=".9" cy=".2" r=".5"><stop offset="0" stop-color="#06B6D4" stop-opacity=".4"/><stop offset="1" stop-color="#06B6D4" stop-opacity="0"/></radialGradient>
+    <radialGradient id="b3" cx=".7" cy="1" r=".5"><stop offset="0" stop-color="#22C55E" stop-opacity=".22"/><stop offset="1" stop-color="#22C55E" stop-opacity="0"/></radialGradient>
+    <clipPath id="clip"><rect x="700" y="150" width="400" height="225" rx="22"/></clipPath>
+  </defs>
+  <rect width="1200" height="630" fill="#0B1220"/>
+  <rect width="1200" height="630" fill="url(#b1)"/><rect width="1200" height="630" fill="url(#b2)"/><rect width="1200" height="630" fill="url(#b3)"/>
+
+  <!-- brand -->
+  <g transform="translate(72,72)">
+    <rect width="56" height="56" rx="16" fill="url(#brand)"/>
+    <path d="M28 12v19m0 0-8-8m8 8 8-8" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15 39.5h26" fill="none" stroke="#22C55E" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <text x="146" y="113" font-family="Poppins, Inter, sans-serif" font-weight="700" font-size="38" fill="#fff">Sdab</text>
+
+  <!-- headline -->
+  <text font-family="Poppins, Inter, sans-serif" font-weight="700" font-size="62" fill="#fff">
+    <tspan x="72" y="290">Save the media</tspan>
+    <tspan x="72" y="362">you have the right</tspan>
+    <tspan x="72" y="434">to keep.</tspan>
+  </text>
+  <text x="72" y="512" font-family="Inter, Arial, sans-serif" font-size="27" fill="#94A3B8">Paste a link. Choose a format. Download.</text>
+
+  <!-- glass media card -->
+  <g>
+    <rect x="672" y="122" width="456" height="380" rx="34" fill="#ffffff" fill-opacity=".07" stroke="#ffffff" stroke-opacity=".18"/>
+    <g clip-path="url(#clip)">
+      <rect x="700" y="150" width="400" height="225" fill="url(#thumb)"/>
+      <circle cx="1030" cy="200" r="30" fill="#fff" opacity=".9"/>
+      <path d="M700 375V320l74-52 66 50 58-38 88 66 114-44v73z" fill="#1E1B4B" opacity=".55"/>
+    </g>
+    <circle cx="900" cy="262" r="34" fill="#fff" fill-opacity=".25" stroke="#fff" stroke-opacity=".5"/>
+    <path d="M891 245v34l28-17z" fill="#fff"/>
+    <rect x="700" y="400" width="250" height="14" rx="7" fill="#fff" fill-opacity=".28"/>
+    <rect x="700" y="430" width="140" height="11" rx="5.5" fill="#fff" fill-opacity=".15"/>
+    <rect x="700" y="462" width="400" height="10" rx="5" fill="#fff" fill-opacity=".12"/>
+    <rect x="700" y="462" width="270" height="10" rx="5" fill="url(#brand)"/>
+  </g>
+  <!-- badges -->
+  <g font-family="Inter, Arial, sans-serif" font-weight="700" font-size="22">
+    <rect x="640" y="176" width="150" height="46" rx="16" fill="#111A2E" stroke="#ffffff" stroke-opacity=".2"/>
+    <text x="715" y="206" text-anchor="middle" fill="#fff">MP4 · 1080p</text>
+    <rect x="866" y="486" width="256" height="46" rx="16" fill="#111A2E" stroke="#22C55E" stroke-opacity=".6"/>
+    <circle cx="894" cy="509" r="6" fill="#22C55E"/>
+    <text x="912" y="516" fill="#fff">Rights confirmed</text>
+  </g>
+</svg>

@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────────────────── Fonts (self-hosted, latin subset) ───────────────────────── */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-600-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-700-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ───────────────────────── Base ───────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: light;
+  }
+  html.dark { color-scheme: dark; }
+
+  body {
+    @apply bg-paper font-sans text-[16px] leading-relaxed text-slate-600 antialiased;
+  }
+  .dark body { @apply bg-ink-900 text-slate-300; }
+
+  /* Ensure the hidden attribute always wins over display utilities (.grid, .flex ...) */
+  [hidden] { display: none !important; }
+
+  h1, h2, h3 { text-wrap: balance; }
+  h1, h2, h3, h4 { @apply font-display font-semibold tracking-tight text-slate-900; }
+  .dark h1, .dark h2, .dark h3, .dark h4 { @apply text-white; }
+
+  ::selection { @apply bg-primary-600 text-white; }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-paper;
+  }
+  .dark :focus-visible { @apply ring-offset-ink-900; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ───────────────────────── Components ───────────────────────── */
+@layer components {
+  /* Layout */
+  .wrap { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+  .section { @apply py-20 sm:py-28; }
+  .section-title { @apply text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]; }
+  .section-lead { @apply mt-4 max-w-[62ch] text-lg text-slate-600; }
+  .dark .section-lead { @apply text-slate-400; }
+
+  /* Glass surfaces — three levels of emphasis */
+  .glass {
+    @apply border border-white/70 bg-white/60 shadow-glass backdrop-blur-xl;
+  }
+  .dark .glass {
+    @apply border-white/10 bg-white/[0.04] shadow-glass-dark;
+  }
+  .glass-strong {
+    @apply border border-white/80 bg-white/80 shadow-glass backdrop-blur-2xl;
+  }
+  .dark .glass-strong {
+    @apply border-white/10 bg-ink-800/70 shadow-glass-dark;
+  }
+  .surface {
+    @apply border border-slate-200 bg-white;
+  }
+  .dark .surface { @apply border-white/10 bg-ink-800/60; }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl px-5 text-[15px] font-semibold transition duration-200;
+  }
+  .btn-primary {
+    @apply bg-gradient-to-br from-primary-600 to-primary-500 text-white shadow-glow hover:-translate-y-0.5 hover:from-primary-700 hover:to-primary-600 active:translate-y-0;
+  }
+  .btn-primary[aria-disabled='true'] { @apply cursor-not-allowed opacity-70 hover:translate-y-0; }
+  .btn-quiet {
+    @apply border border-slate-300/80 bg-white/70 text-slate-800 hover:border-slate-400 hover:bg-white;
+  }
+  .dark .btn-quiet {
+    @apply border-white/10 bg-white/5 text-slate-100 hover:bg-white/10;
+  }
+  .btn-icon {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-300/80 bg-white/70 text-slate-700 transition hover:bg-white;
+  }
+  .dark .btn-icon { @apply border-white/10 bg-white/5 text-slate-200 hover:bg-white/10; }
+
+  /* Text link */
+  .link {
+    @apply font-medium text-primary-700 underline decoration-primary-300 decoration-2 underline-offset-4 transition hover:decoration-primary-600;
+  }
+  .dark .link { @apply text-primary-300 decoration-primary-700 hover:decoration-primary-300; }
+
+  /* Form controls */
+  .field {
+    @apply min-h-[52px] w-full rounded-xl border border-slate-300/80 bg-white/80 px-4 text-base text-slate-900 placeholder:text-slate-500 transition;
+  }
+  .dark .field { @apply border-white/10 bg-ink-900/60 text-white placeholder:text-slate-400; }
+  .field:hover { @apply border-slate-400; }
+  .dark .field:hover { @apply border-white/25; }
+  .field[aria-invalid='true'] { @apply border-red-500; }
+
+  /* Radio "option" tiles (quality / format) — native input + adjacent label */
+  .opt {
+    @apply flex min-h-[48px] cursor-pointer select-none flex-col justify-center rounded-xl border border-slate-300/80 bg-white/70 px-4 py-2 text-sm text-slate-700 transition;
+  }
+  .dark .opt { @apply border-white/10 bg-white/5 text-slate-300; }
+  .opt:hover { @apply border-primary-400; }
+  input:checked + .opt {
+    @apply border-primary-600 bg-primary-600/10 text-primary-800 ring-1 ring-primary-600;
+  }
+  .dark input:checked + .opt { @apply border-primary-400 bg-primary-500/15 text-white ring-primary-400; }
+  input:focus-visible + .opt { @apply ring-2 ring-primary-500 ring-offset-2 ring-offset-paper; }
+  .dark input:focus-visible + .opt { @apply ring-offset-ink-900; }
+
+  /* Small labels */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-slate-300/70 bg-white/70 px-3 py-1 text-[13px] font-medium text-slate-700;
+  }
+  .dark .chip { @apply border-white/10 bg-white/5 text-slate-300; }
+
+  /* Decorative grid that fades out toward the edges */
+  .grid-fade {
+    background-image:
+      linear-gradient(to right, rgb(79 70 229 / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(79 70 229 / 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+  }
+  .dark .grid-fade {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  }
+
+  /* Softens the bottom edge of clipped background layers */
+  .fade-bottom {
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent);
+    mask-image: linear-gradient(to bottom, #000 62%, transparent);
+  }
+
+  /* Loading skeleton */
+  .skeleton {
+    @apply relative overflow-hidden rounded-lg bg-slate-200;
+  }
+  .dark .skeleton { @apply bg-white/10; }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/50 to-transparent;
+  }
+  .dark .skeleton::after { @apply via-white/10; }
+
+  /* FAQ accordion (native <details>) */
+  .faq summary { @apply flex min-h-[64px] cursor-pointer list-none items-center justify-between gap-6 py-4 font-display text-[1.05rem] font-semibold text-slate-900; }
+  .dark .faq summary { @apply text-white; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq .faq-icon { @apply shrink-0 text-primary-600 transition-transform duration-300; }
+  .dark .faq .faq-icon { @apply text-primary-300; }
+  .faq[open] .faq-icon { @apply rotate-45; }
+  .faq[open] .faq-body { animation: rise 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+  /* Rights lock (hero): the lock icon "opens" when the checkbox is ticked */
+  .rights-lock .lock-open { @apply hidden; }
+  .rights-lock[data-unlocked='true'] .lock-closed { @apply hidden; }
+  .rights-lock[data-unlocked='true'] .lock-open { @apply block animate-unlock; }
+
+  /* Submit button while a lookup is running */
+  .btn[data-busy='true'] .lock-closed,
+  .btn[data-busy='true'] .lock-open { display: none !important; }
+
+  /* Legal pages */
+  .legal { @apply max-w-[68ch]; }
+  .legal h2 { @apply mt-12 text-2xl; }
+  .legal h3 { @apply mt-8 text-lg; }
+  .legal p, .legal ul, .legal ol { @apply mt-4; }
+  .legal ul { @apply list-disc pl-6; }
+  .legal ol { @apply list-decimal pl-6; }
+  .legal li { @apply mt-2; }
+  .legal a { @apply link; }
+}

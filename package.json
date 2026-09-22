@@ -1,0 +1,14 @@
+{
+  "name": "sdab-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sdab: static landing page for a permission-first media downloader (GitHub Pages)",
+  "scripts": {
+    "dev": "tailwindcss -i src/input.css -o assets/css/styles.css --watch",
+    "build": "tailwindcss -i src/input.css -o assets/css/styles.css --minify",
+    "serve": "npx serve . -l 8080"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
